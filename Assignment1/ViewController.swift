@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var flipsLabel: UILabel!
     @IBOutlet var cards: [UIButton]!
-    var emojies = ["🐻","🦊","🐹","🐱","🐶"]
+    var emojies = ["🐻","🦊","🐹","🐱","🐶","🐻","🦊","🐹","🐱","🐶","🐻","🦊","🐹","🐱","🐶","🐻","🦊","🐹","🐱","🐶"]
     var flipCount = 0 {
         didSet{
             flipsLabel.text = "Flips: \(flipCount)"
