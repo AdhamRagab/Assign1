@@ -138,12 +138,24 @@
                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHq-Mr-evS">
+                                <rect key="frame" x="165" y="588" width="86" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ResetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9G6-gl-LQK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="u96-2K-VIU" firstAttribute="centerX" secondItem="efL-5Q-OY9" secondAttribute="centerX" id="1Tr-dI-ENL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="efL-5Q-OY9" secondAttribute="bottom" constant="0.5" id="1jf-YM-NW5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u96-2K-VIU" secondAttribute="trailing" constant="20" id="2Xs-Bs-fS8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="u96-2K-VIU" secondAttribute="bottom" constant="500" id="3Nd-mc-QHU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="u96-2K-VIU" secondAttribute="bottom" constant="500" id="3Nd-mc-QHU"/>
                             <constraint firstItem="efL-5Q-OY9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="760" id="HnJ-mY-A9x"/>
                             <constraint firstItem="u96-2K-VIU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LFs-T8-7j2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="efL-5Q-OY9" secondAttribute="trailing" constant="133" id="bpb-oo-chz"/>
