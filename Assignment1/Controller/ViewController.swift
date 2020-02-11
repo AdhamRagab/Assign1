@@ -14,11 +14,14 @@ class ViewController: UIViewController {
         
     }
     
-    lazy var game = Concentration(numberOfPairsOfCards: (cards.count/2)+1)
-    @IBOutlet weak var flipsLabel: UILabel!
-    @IBOutlet var cards: [UIButton]!
-    var emojies = ["🐻","🦊","🐹","🐱","🐶","🐰"]
-    var flipCount = 0 {
+   private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairs)
+   var numberOfPairs : Int {
+        return (cards.count/2)+1
+    }
+    @IBOutlet private weak var flipsLabel: UILabel!
+    @IBOutlet private var cards: [UIButton]!
+   private var emojies = "🐻🦊🐹🐱🐶🐰"
+   private(set) var flipCount = 0 {
         didSet{
             flipsLabel.text = "Flips: \(flipCount)"
         }
@@ -28,7 +31,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
             flipCount += 1
         if let cardNumber = cards.firstIndex(of: sender){
             game.chooseCard(at: cardNumber)
@@ -38,7 +41,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateViewFromModel () {
+   private func updateViewFromModel () {
         for index in cards.indices {
             let button = cards[index]
             let card  = game.cards[index]
@@ -56,18 +59,31 @@ class ViewController: UIViewController {
 
     }
     
-    var emoji = [Int:String]()
+    private var emoji = [Card:String]()
     
-    func emoji(for card:Card) -> String {
+   private  func emoji(for card:Card) -> String {
         
-        if emoji[card.identifier] == nil {
+    if emoji[card] == nil {
             if emojies.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojies.count)))
-            emoji[card.identifier] = emojies.remove(at: randomIndex)
+                let randomIndex = emojies.index(emojies.startIndex, offsetBy: emojies.count.arc4random)
+                emoji[card] = String(emojies.remove(at: randomIndex))
             }
         }
         
-        return emoji[card.identifier] ?? "?"
+    return emoji[card] ?? "?"
+    }
+    
+}
+
+extension Int {
+    var arc4random: Int{
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self)))
+        }else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self))))
+        }else {
+            return 0
+        }
     }
     
 }
