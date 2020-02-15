@@ -138,13 +138,54 @@
                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sNN-iF-MOP">
+                                <rect key="frame" x="166" y="407" width="86" height="160"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vr-Oe-bmG">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Animals">
+                                            <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ThemeChosen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4H4-RB-Q0s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltQ-45-C5C">
+                                        <rect key="frame" x="0.0" y="56" width="86" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Faces">
+                                            <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ThemeChosen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VY7-gk-8dq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emT-XZ-4vg">
+                                        <rect key="frame" x="0.0" y="112" width="86" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Sports">
+                                            <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ThemeChosen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rw9-bS-stV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1N-RN-IVO">
+                                <rect key="frame" x="155.5" y="721" width="103.5" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHq-Mr-evS">
-                                <rect key="frame" x="165" y="588" width="86" height="56"/>
+                                <rect key="frame" x="163" y="596" width="88" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="EtS-Nh-aal"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="Reset">
+                                <state key="normal" title="New game">
                                     <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -157,11 +198,18 @@
                             <constraint firstItem="u96-2K-VIU" firstAttribute="centerX" secondItem="efL-5Q-OY9" secondAttribute="centerX" id="1Tr-dI-ENL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="efL-5Q-OY9" secondAttribute="bottom" constant="0.5" id="1jf-YM-NW5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u96-2K-VIU" secondAttribute="trailing" constant="20" id="2Xs-Bs-fS8"/>
+                            <constraint firstItem="J1N-RN-IVO" firstAttribute="top" secondItem="SHq-Mr-evS" secondAttribute="bottom" constant="69" id="2w1-fk-4rl"/>
+                            <constraint firstItem="SHq-Mr-evS" firstAttribute="centerX" secondItem="J1N-RN-IVO" secondAttribute="centerX" id="6P4-8W-g20"/>
+                            <constraint firstItem="SHq-Mr-evS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ax4-2s-sWB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sNN-iF-MOP" secondAttribute="bottom" constant="295" id="DPa-a4-dBC"/>
                             <constraint firstItem="efL-5Q-OY9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="760" id="HnJ-mY-A9x"/>
                             <constraint firstItem="u96-2K-VIU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LFs-T8-7j2"/>
-                            <constraint firstAttribute="bottom" secondItem="SHq-Mr-evS" secondAttribute="bottom" constant="252" id="NdZ-ke-3Tz"/>
                             <constraint firstItem="efL-5Q-OY9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u96-2K-VIU" secondAttribute="bottom" constant="582" id="OFA-6O-qU4"/>
+                            <constraint firstItem="sNN-iF-MOP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="166" id="RvW-En-85V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sNN-iF-MOP" secondAttribute="trailing" constant="162" id="WrB-Oy-Qaq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="efL-5Q-OY9" secondAttribute="trailing" id="bpb-oo-chz"/>
+                            <constraint firstItem="sNN-iF-MOP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="363" id="d8Q-7H-B5o"/>
+                            <constraint firstItem="SHq-Mr-evS" firstAttribute="top" secondItem="sNN-iF-MOP" secondAttribute="bottom" constant="29" id="eYP-nX-0Us"/>
                             <constraint firstItem="efL-5Q-OY9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hLE-08-6lE"/>
                             <constraint firstItem="u96-2K-VIU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="leW-kY-CYg"/>
                             <constraint firstItem="SHq-Mr-evS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="suI-sX-gY1"/>
@@ -170,6 +218,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="ScoreLabel" destination="J1N-RN-IVO" id="M2n-0M-hy7"/>
                         <outlet property="flipsLabel" destination="efL-5Q-OY9" id="aVx-cU-AEl"/>
                         <outletCollection property="cards" destination="rAS-x2-5k8" collectionClass="NSMutableArray" id="4bi-VI-Iee"/>
                         <outletCollection property="cards" destination="cUI-g4-kgy" collectionClass="NSMutableArray" id="9Uw-3B-dq7"/>

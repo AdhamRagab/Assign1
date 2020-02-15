@@ -10,38 +10,84 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet private weak var flipsLabel: UILabel!
+    @IBOutlet private var cards: [UIButton]!
+    
     @IBAction func ResetPressed(_ sender: UIButton) {
+        CreateGame(usingEmojies: themes.Trees.rawValue)
+    }
+    
+    @IBAction func ThemeChosen(_ sender: UIButton) {
+        
+     switch sender.currentTitle {
+        case "Animals":
+            CreateGame(usingEmojies: themes.Animals.rawValue)
+        case "Sports":
+            CreateGame(usingEmojies: themes.Sports.rawValue)
+        case "Faces":
+            CreateGame(usingEmojies: themes.Faces.rawValue)
+        case "Trees":
+            CreateGame(usingEmojies: themes.Trees.rawValue)
+        default :
+            break
+        }
+    }
+    
+   private func CreateGame (usingEmojies theme:String){
+        emojies = theme
+        game = Concentration(numberOfPairsOfCards: numberOfPairs)
+        flipsLabel.text = "Flips: \(game?.flipCount ?? 0)"
+        ScoreLabel.text = "Score: \(game?.score ?? 0)"
+        updateViewFromModel()
+    }
+    
+   private var game :Concentration?
+   var numberOfPairs : Int {
+        return (cards.count/2)
+    }
+    
+    
+    
+    var emojies = "🌵🎄🌳🌴☘️🍃"
+    
+    private enum themes : String {
+        case Animals = "🐻🐹🦊🐱🐭🐶"
+        case Sports = "🏀🏈🏐⚾️🎾⚽️"
+        case Faces = "🥶😄😡😊🤩😍"
+        case Trees = "🌵🎄🌳🌴☘️🍃"
+    }
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        game = Concentration(numberOfPairsOfCards: numberOfPairs)
+        game?.delegate = self as? RefreshDisplayDelegate
         
     }
     
-   private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairs)
-   var numberOfPairs : Int {
-        return (cards.count/2)+1
-    }
-    @IBOutlet private weak var flipsLabel: UILabel!
-    @IBOutlet private var cards: [UIButton]!
-   private var emojies = "🐻🦊🐹🐱🐶🐰"
-   private(set) var flipCount = 0 {
-        didSet{
-            flipsLabel.text = "Flips: \(flipCount)"
-        }
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+    
+    override func viewDidLayoutSubviews() {
+        updateViewFromModel()
     }
 
     @IBAction private func touchCard(_ sender: UIButton) {
-            flipCount += 1
+        updateViewFromModel()
+        guard let game = game else {return}
         if let cardNumber = cards.firstIndex(of: sender){
+            ScoreLabel.text = "Score: \(String(game.score))"
             game.chooseCard(at: cardNumber)
-            updateViewFromModel()
+            
+            
         }else {
             print("chosen card not in stack")
         }
+        flipsLabel.text = "Flips: \(String(game.flipCount))"
     }
     
    private func updateViewFromModel () {
+    guard let game = game else {return}
         for index in cards.indices {
             let button = cards[index]
             let card  = game.cards[index]
@@ -53,9 +99,15 @@ class ViewController: UIViewController {
             }else{
                 button.setTitle("", for: UIControl.State.normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0) : #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+                    print(card.isMatched)
+                        
+                }
             }
         }
+    
+    
+    
 
     }
     
@@ -64,13 +116,19 @@ class ViewController: UIViewController {
    private  func emoji(for card:Card) -> String {
         
     if emoji[card] == nil {
-            if emojies.count > 0 {
+        if emojies.count > 0 {
                 let randomIndex = emojies.index(emojies.startIndex, offsetBy: emojies.count.arc4random)
                 emoji[card] = String(emojies.remove(at: randomIndex))
+                
             }
         }
         
     return emoji[card] ?? "?"
+    }
+    
+    func RefreshDisplay() {
+      updateViewFromModel()
+        self.setNeedsFocusUpdate()
     }
     
 }

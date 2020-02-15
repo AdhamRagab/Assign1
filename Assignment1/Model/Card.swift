@@ -6,7 +6,9 @@
 //  Copyright © 2020 Adham Ragab. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+
 
 struct Card : Hashable {
     
@@ -18,8 +20,12 @@ struct Card : Hashable {
         hasher.combine(identifier)
     }
     
+    
+   
+    
     var isFaceUp = false
     var isMatched = false
+    var SeenCount = 0
     private var identifier: Int
     
     private static var identiferFactory = 0
