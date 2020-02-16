@@ -31,7 +31,7 @@ class Concentration{
     }
     
     
-    
+    // MARK: - Choose Card
     
     func chooseCard(at index:Int){
         cards[index].SeenCount += 1
@@ -40,18 +40,18 @@ class Concentration{
                 if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    
                 }
-                    cards[index].isFaceUp = true
+                cards[index].isFaceUp = true
             }else {
                 indexOfOneAndOnlyFaceUp = index
-                
             }
             
             if cards[index].SeenCount > 2 {
                 score -= 1
             }else if cards[index].isMatched && cards[index].SeenCount > 2 {
                 score += 1
-            }else if cards[index].isMatched && cards[index].SeenCount <= 1 {
+            }else if cards[index].isMatched && cards[index].SeenCount <= 2 {
                 score += 2
             }
         }
@@ -66,14 +66,6 @@ class Concentration{
     
    
     
-    func setPairs(numberOfPairsOfCards:Int) {
-        for _ in 0..<numberOfPairsOfCards {
-            let card = Card()
-            cards += [card,card]
-        }
-        cards.shuffle()
-    }
-    
     init(numberOfPairsOfCards:Int) {
          for _ in 0..<numberOfPairsOfCards {
                    let card = Card()
@@ -81,9 +73,6 @@ class Concentration{
                }
                cards.shuffle()
     }
-    
-    
-    
     
     
     
