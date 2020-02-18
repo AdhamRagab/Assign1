@@ -112,9 +112,7 @@ class ViewController: UIViewController {
     }
     
     
-    
-
-    }
+   }
     
      // MARK: - Emojies and Themes
     
